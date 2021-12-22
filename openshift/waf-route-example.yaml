@@ -1,0 +1,17 @@
+kind: Route
+apiVersion: v1
+metadata:
+  labels:
+    app: apache-httpd-modsecurity
+  name: apache-httpd-modsecurity
+spec:
+  host: apache-httpd-modsecurity-external-hostname
+  port:
+    targetPort: 8443-tcp
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: reencrypt
+  to:
+    kind: Service
+    name: apache-httpd-modsecurity
+    weight: 100

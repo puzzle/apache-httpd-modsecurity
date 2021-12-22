@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: apache-httpd-modsecurity
+    app.kubernetes.io/name: {{ include "apache-httpd-modsecurity.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  name: {{ include "apache-httpd-modsecurity.fullname" . }}
+spec:
+  ports:
+  - name: {{ .Values.service.port }}-tcp
+    port: {{ .Values.service.port }}
+    protocol: TCP
+    targetPort: {{ .Values.modsecurity.apache.port }}
+  selector:
+    app: apache-httpd-modsecurity
+    app.kubernetes.io/name: {{ include "apache-httpd-modsecurity.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  sessionAffinity: ClientIP
+  type: {{ .Values.service.type }}
