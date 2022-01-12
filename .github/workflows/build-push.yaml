@@ -2,7 +2,7 @@ name: Trigger builds on quay.io
 on:
   push:
     branches:
-      - master
+      - main
   schedule:
     - cron: '0 12 * * MON'  # Run every Monday
 jobs:
