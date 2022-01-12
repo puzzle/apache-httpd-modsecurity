@@ -32,4 +32,3 @@ jobs:
         bearerToken: '${{ secrets.QUAY_ACCESS_TOKEN }}'
         # Prevent this Action to fail if the request respond without an response
         preventFailureOnNoResponse: # optional
-~                                                 
